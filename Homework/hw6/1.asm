@@ -3,7 +3,6 @@ main:	li $t0,0x73a8ef64
 	li $t1,4
 	la $t2,z
 	bgezal $t1,loop
-	jal print
 	li $v0,10
 	syscall	
 
