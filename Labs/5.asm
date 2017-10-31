@@ -1,6 +1,9 @@
 	.data
 string1: .ascii ""
-buff:	 .space 30
+buff1:	 .space 30
+string2: .ascii ""
+buff2:   .space 30
+abcs:    .asciiz "abcdefghijklmnopqrstuzwxyz"
 
 	.text
 main:	la $a0,string1
