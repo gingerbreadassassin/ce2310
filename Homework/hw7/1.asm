@@ -34,12 +34,12 @@ ploop:	li $v0,1	# print integer
 	jal pnl		# print newline
 	j ploop		# print next number
 
-pnl:	li $a0,0xA
-	li $v0,11
+pnl:	li $a0,0xA	# load newline char
+	li $v0,11	# print char
 	syscall
-	jr $ra
+	jr $ra		# return to caller
 
-done:	li $v0,10
+done:	li $v0,10	# end program
 	syscall
 
 	.data
