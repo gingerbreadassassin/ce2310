@@ -1,17 +1,17 @@
 	.data
-array:	.space 3200
+array:	.space 1600
 
 	.text
 main:	li $t0,0
 	li $t1,1
-even:	beq $t0,3200,done
+even:	beq $t0,1600,done
 	sw $t1,array($t0)
 	addi $t0,$t0,4
 	addi $t1,$t1,1
 	beq $t1,21,odd
 	j even
 
-odd:	beq $t0,3200,done
+odd:	beq $t0,1600,done
 	addi $t1,$t1,-1
 	sw $t1,array($t0)
 	addi $t0,$t0,4
