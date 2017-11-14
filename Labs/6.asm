@@ -18,27 +18,30 @@ read:	beq $t0,30,done
 	addi $t0,$t0,1
 	li $t1,0
 ins:	lb $t2,str($t1)
-	blt $v0,$t2,trikld
 	beqz $t2,zed
-	addi $t1,$t1,1
+	bgt $v0,$t2,cnt
+	jal trikld
+	sb $v0,str($t1)
+	j notake
+cnt:	addi $t1,$t1,1
 	j ins
 	
-trikld:	beqz $t2,triklu
-	addi $sp,$sp,-1
-	sb $t2,($sp)
+trikld:	addi $sp,$sp,-8
+	sw $ra,($sp)
+	sb $t2,7($sp)
 	addi $t1,$t1,1
 	addi $t3,$t3,1
 	lb $t2,str($t1)
-	j trikld
-
-triklu:	lb $t2,($sp)
+	beqz $t2,triklu
+	jal trikld
+triklu:	lb $t2,7($sp)
 	sb $t2,str($t1)
-	addi $sp,$sp,1
+	lw $ra,($sp)
+	addi $sp,$sp,8
 	addi $t1,$t1,-1
 	addi $t3,$t3,-1
-	bgtz $t3,triklu
-	sb $v0,str($t1)
-	j notake
+	jr $ra
+
 	
 zed:	sb $v0,str($t1)
 	j notake
